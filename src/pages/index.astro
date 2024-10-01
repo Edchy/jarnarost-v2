@@ -25,10 +25,10 @@ import { slide } from "astro:transitions";
           imageSrc="/images/gallery/img1.avif"
         />
         <Card
-          body="nåt."
+          body="#"
           id="image-1"
           hoverBg="var(--color-4-dark)"
-          href="./"
+          href="#"
           imageSrc="/images/gallery/img2.avif"
         />
         <Card
@@ -39,24 +39,24 @@ import { slide } from "astro:transitions";
           imageSrc="/images/gallery/img3.avif"
         />
         <Card
-          body="galleriet"
+          body="!"
           id="image-3"
           hoverBg="var(--color-4-dark)"
-          href="./"
+          href="#"
           imageSrc="/images/gallery/img4.avif"
         />
         <Card
-          body="bloggen"
+          body="kontakt"
           id="image-4"
           hoverBg="var(--color-brand-2)"
-          href="./"
+          href="mailto:info@jarnaroster.se"
           imageSrc="/images/gallery/img5.avif"
         />
         <Card
-          body="kontakt"
+          body="?"
           id="image-5"
           hoverBg="var(--color-4-dark)"
-          href="mailto:info@jarnaroster.se"
+          href="#"
           imageSrc="/images/gallery/img6.avif"
         />
       </menu>
@@ -122,20 +122,9 @@ import { slide } from "astro:transitions";
     grid-template-columns: 1fr;
     min-height: 100svh;
   }
-  /* .card-links {
-    grid-template-columns: 1fr 1fr;
-  }
-  .logo-card {
-    grid-row: span 1;
-  }
-  .image-5 {
-    grid-column: span 2;
-  }
+
   .image-0 {
-    grid-row: span 2;
-  } */
-  .image-0 {
-    /* animation: var(--animation-slide-in-right); */
+    animation: var(--animation-slide-in-right);
 
     & div {
       /* border-radius: var(--radius-blob-1); */
@@ -150,7 +139,7 @@ import { slide } from "astro:transitions";
     }
   }
   .image-1 {
-    /* animation: var(--animation-slide-in-up); */
+    animation: var(--animation-slide-in-up);
     /* transition: all 2s; */
     & div {
       /* border-radius: var(--radius-drawn-3); */
@@ -194,6 +183,9 @@ import { slide } from "astro:transitions";
       -webkit-mask: var(--mask-corner-cut-circles-3);
       -webkit-mask: var(--mask-edge-drip-top);
     } */
+    & h2 {
+      transform: rotate(-180deg);
+    }
   }
   .image-5 {
     /* animation: var(--animation-slide-in-right); */

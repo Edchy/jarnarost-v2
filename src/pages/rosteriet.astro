@@ -14,102 +14,11 @@ import Footer from "../layouts/Footer.astro";
     <Header
       heading="rosteriet"
       color="var(--color-dark)"
-      bg="var(--color-light)"
-      clipBg="var(--color-light)"
+      bg="var(--color-4-dark)"
+      clipBg="var(--color-4-dark)"
       transitionName="image-2"
     />
   </main>
-
-  <script>
-    // lazy load videos
-    document.addEventListener("DOMContentLoaded", function () {
-      console.log(222);
-      const lazyVideo = document.querySelector("video[data-src]");
-      if (lazyVideo instanceof HTMLVideoElement) {
-        const videoObserver = new IntersectionObserver(function (
-          entries,
-          observer
-        ) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              const video = entry.target as HTMLVideoElement;
-              if (video.dataset.src) {
-                video.src = video.dataset.src;
-                video.load();
-                videoObserver.unobserve(video);
-              }
-            }
-          });
-        });
-        videoObserver.observe(lazyVideo);
-      }
-    });
-  </script>
 </Layout>
 
-<style>
-  h2 {
-    font-size: var(--size-fluid-4);
-  }
-  .span {
-    /* grid-column: 1 / -1; */
-    display: none;
-    @media (min-width: 700px) {
-      display: block;
-    }
-  }
-  .img-container {
-    max-width: 100%;
-    max-height: 100vh;
-    @media (min-width: 700px) {
-      max-height: 90vh;
-    }
-  }
-  img,
-  video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.22);
-    /* border: 10px solid orange; */
-    /* -webkit-mask: var(--mask-edge-drip-bottom);
-    -webkit-mask: var(--mask-edge-zig-zag-bottom); */
-  }
-  .section-wrapper {
-    background-color: #cd2202;
-    background-color: var(--color-dark);
-    background-color: var(--color-brand-2);
-    /* background-image: url("/images/patterns/img44.avif"); */
-
-    /* -webkit-mask: var(--mask-edge-drip-top); */
-    -webkit-mask: var(--mask-edge-zig-zag-bottom);
-  }
-  section {
-    /* -webkit-mask: var(--mask-edge-zig-zag-left); */
-    background-color: var(--color-1);
-    /* margin-top: 10rem; */
-    /* padding-inline: 6rem; */
-    width: var(--wrapper);
-    /* height: 100vh; */
-    margin-inline: auto;
-    display: grid;
-    gap: var(--size-fluid-4);
-    /* grid-template-columns: 2fr 1fr; */
-    align-content: center;
-    color: var(--color-light);
-    color: var(--color-brand-2);
-    color: var(--color-dark);
-  }
-
-  @media (width > 700px) {
-    .section-1 {
-      grid-template-columns: 2fr 1fr;
-    }
-    .section-2 {
-      grid-template-columns: 1fr 2fr;
-    }
-    .section-2 .flow {
-      order: 1;
-    }
-  }
-</style>
+<style></style>

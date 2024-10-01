@@ -5,6 +5,10 @@
     <img src="/images/coffee/espgrande.avif" alt="bag of coffebeans" />
     <img src="/images/coffee/esp.avif" alt="bag of coffebeans" />
     <img src="/images/coffee/mellan.avif" alt="bag of coffebeans" />
+    <img src="/images/coffee/brygg.avif" alt="bag of coffebeans" />
+    <img src="/images/coffee/espgrande.avif" alt="bag of coffebeans" />
+    <img src="/images/coffee/esp.avif" alt="bag of coffebeans" />
+    <img src="/images/coffee/mellan.avif" alt="bag of coffebeans" />
   </div>
 </div>
 
@@ -19,10 +23,10 @@
   }
 
   .scroller__inner {
-    padding-block: 1rem;
+    /* padding-block: 1rem; */
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    /* gap: 1rem; */
   }
 
   .scroller[data-animated="true"] {
@@ -64,7 +68,7 @@
   }
 
   .scroller[data-speed="fast"] {
-    --_animation-duration: 20s;
+    --_animation-duration: 5s;
   }
 
   .scroller[data-speed="slow"] {
@@ -84,7 +88,9 @@
   }
   img {
     object-fit: scale-down;
+    animation: spin 5s infinite;
     aspect-ratio: 1;
+    transform: rotate3d(166deg);
     @media (prefers-reduced-motion) {
       width: 150px;
     }
