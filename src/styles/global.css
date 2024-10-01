@@ -1,10 +1,5 @@
-/* @import "https://unpkg.com/open-props";
-@import "https://unpkg.com/open-props/masks.edges.min.css";
-@import "https://unpkg.com/open-props/masks.corner-cuts.min.css"; */
-
 @import "open-props/style";
 
-/* @import "open-props/masks/corner-cuts"; */
 @import "open-props/masks/edges";
 
 @font-face {
@@ -15,6 +10,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 
 @font-face {
   font-family: "JakobHand";
@@ -31,8 +27,8 @@
 }
 
 @font-face {
-  font-family: "Zimmerman";
-  src: url("/fonts/sf-zimmerman.regular.ttf") format("truetype");
+  font-family: "Bebas";
+  src: url("/fonts/BebasNeue-Regular.ttf") format("truetype");
   font-style: normal;
   font-display: swap;
 }
@@ -71,7 +67,7 @@ img {
   --color-8: #6ea459;
 
   --font-secondary-heading: "Betelgeuse", sans-serif;
-  --font-primary-heading: Inter, Roboto, "Helvetica Neue", "Arial Nova",
+  --font-primary-heading: "Bebas", Inter, Roboto, "Helvetica Neue", "Arial Nova",
     "Nimbus Sans", Arial, sans-serif;
   --font-copy: Optima, Candara, "Noto Sans", source-sans-pro, sans-serif;
 
@@ -111,7 +107,7 @@ img {
 }
 
 .brand-color {
-  color: var(--color-brand-2);
+  color: var(--color-brand-1);
 }
 
 .wrapper {
@@ -155,19 +151,15 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-secondary-heading);
+  font-family: var(--font-primary-heading);
   font-weight: bold;
   line-height: 1;
   text-wrap: balance;
+  letter-spacing: 2px;
 }
 
-h1 {
-  font-family: var(--font-primary-heading);
-}
 
-/* ::selection {
-  color: var(--color-4);
-} */
+
 a:any-link,
 a:visited {
   color: currentColor;
@@ -180,11 +172,6 @@ a:visited {
   text-underline-offset: 0.4em; */
 
   /* transition: opacity 0.2s; */
-}
-
-a:active {
-  color: #fff;
-  color: currentColor;
 }
 
 a:hover {

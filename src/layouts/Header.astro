@@ -16,14 +16,14 @@ const { heading, transitionName, bg, clipBg, color } = Astro.props;
 ---
 
 <header class="clip-bg">
-  <BackBtn />
+  <!-- <BackBtn /> -->
   <section class="grid">
     <div class="heading-container">
       <h1
         transition:animate={slide({ duration: "1s" })}
         transition:name={`card-title-${transitionName}`}
       >
-        {heading}<span class="brand-color dot">.</span>
+        {heading}<span class="brand-color">.</span>
       </h1>
     </div>
     <slot />
@@ -47,9 +47,9 @@ const { heading, transitionName, bg, clipBg, color } = Astro.props;
     display: grid;
     /* grid-template-columns: 1fr 3fr; */
     /* grid-template-columns: 1fr; */
-    height: 98vh;
+    height: 100vh;
     gap: 1rem;
-    /* -webkit-mask: var(--mask-edge-zig-zag-right); */
+    -webkit-mask: var(--mask-edge-zig-zag-right);
 
     @media (min-width: 700px) {
       grid-template-columns: 1fr 2fr 1fr;
@@ -68,7 +68,7 @@ const { heading, transitionName, bg, clipBg, color } = Astro.props;
     left: 50%;
     transform: translate(-50%, -50%);
     white-space: nowrap;
-    font-size: min(8rem, 1rem + 15vw);
+    font-size: min(15rem, 1rem + 20vw);
     z-index: 12;
     padding-top: 2rem;
     @media (min-width: 700px) {
