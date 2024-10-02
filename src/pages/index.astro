@@ -13,7 +13,7 @@ import { slide } from "astro:transitions";
   image="/images/Logga-Trans.png"
 >
   <main>
-    <!-- <img class="full-w-image" src="/images/gallery/img5.avif" alt="" /> -->
+    <img class="full-w-image" src="/images/gallery/img5.avif" alt="" />
     <h1 class="visually-hidden">Järna Rosteri</h1>
     <nav>
       <menu class="card-links">
@@ -28,7 +28,7 @@ import { slide } from "astro:transitions";
           body="#"
           id="image-1"
           hoverBg="var(--color-4-dark)"
-          href="#"
+          href="./test"
           imageSrc="/images/gallery/img2.avif"
         />
         <Card
@@ -62,9 +62,9 @@ import { slide } from "astro:transitions";
       </menu>
     </nav>
   </main>
-  <!-- <script src="../js/cardOpacity.ts"></script>
+  <script src="../js/cardOpacity.ts"></script>
   <script src="../js/index.ts"></script>
-  <script src="../js/initialFullscreenImg.js"></script> -->
+  <script src="../js/initialFullscreenImg.js"></script>
 </Layout>
 <style is:global>
   .active {
@@ -124,7 +124,7 @@ import { slide } from "astro:transitions";
   }
 
   .image-0 {
-    animation: var(--animation-slide-in-right);
+    /* animation: var(--animation-slide-in-right); */
 
     & div {
       /* border-radius: var(--radius-blob-1); */
@@ -139,7 +139,7 @@ import { slide } from "astro:transitions";
     }
   }
   .image-1 {
-    animation: var(--animation-slide-in-up);
+    /* animation: var(--animation-slide-in-up); */
     /* transition: all 2s; */
     & div {
       /* border-radius: var(--radius-drawn-3); */
