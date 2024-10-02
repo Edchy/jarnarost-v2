@@ -106,7 +106,7 @@ img {
   margin-top: var(--size-fluid-2, 1em);
 }
 
-.brand-color {
+.dot {
   color: var(--color-brand-1);
 }
 
@@ -233,6 +233,16 @@ a:hover {
 
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes hueRotate {
+  from {
+    filter: hue-rotate(0%);
+  }
+
+  to {
+    filter: hue-rotate(360deg);
   }
 }
 

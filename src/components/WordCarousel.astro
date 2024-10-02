@@ -1,0 +1,41 @@
+<div class="carousel-container">
+  <div class="carousel">
+    <span class="carousel-item">ESPRESSO</span>
+    <span class="carousel-item">EKOLOGISKT</span>
+    <span class="carousel-item">BIODYNAMISKT</span>
+    <span class="carousel-item">BRYGG</span>
+    <!-- Duplicate items to create a seamless loop -->
+    <span class="carousel-item">ESPRESSO</span>
+    <span class="carousel-item">EKOLOGISKT</span>
+    <span class="carousel-item">BIODYNAMISKT</span>
+    <span class="carousel-item">BRYGG</span>
+  </div>
+</div>
+
+<style>
+  .carousel-container {
+    max-width: 200px;
+    overflow: hidden;
+    background-color: var(--color-8);
+  }
+
+  .carousel {
+    display: inline-block;
+    white-space: nowrap;
+    animation: scroll2 10s linear infinite;
+  }
+
+  .carousel-item {
+    display: inline-block;
+    padding-inline: 2rem;
+  }
+
+  @keyframes scroll2 {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+</style>

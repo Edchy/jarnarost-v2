@@ -1,5 +1,5 @@
 ---
-import Header from "../layouts/Header.astro";
+import Main from "../layouts/Main.astro";
 import ProductLayout from "../layouts/ProductLayout.astro";
 import Carousel from "../components/Carousel.astro";
 import Layout from "../layouts/Layout.astro";
@@ -13,7 +13,7 @@ import Footer from "../layouts/Footer.astro";
   description="Vårt utbud av ekologiskt, biodynamiskt och omsorgsfullt rostat kaffe."
   image="/images/coffee/esplabels.avif"
 >
-  <Header
+  <Main
     heading="kaffet"
     color="var(--color-light)"
     clipBg="var(--color-brand-2)"
@@ -25,7 +25,7 @@ import Footer from "../layouts/Footer.astro";
       Alltid färskt. <br />
       Alltid Ekologiskt. <br /> Alltid Biodynamiskt.
     </p>
-  </Header>
+  </Main>
 
   <main>
     <section class="coffee-section">
@@ -362,7 +362,7 @@ import Footer from "../layouts/Footer.astro";
 
   p.hero-text {
     /* text-align: center; */
-    grid-column: 2 / -1;
+    /* grid-column: 2 / -1; */
     padding-inline: 2rem;
     font-size: var(--step-1);
     line-height: 1;
@@ -382,7 +382,7 @@ import Footer from "../layouts/Footer.astro";
     }
     @media (min-width: 1168px) {
       place-self: center;
-      grid-column: 3 / -1;
+      /* grid-column: 3 / -1; */
     }
   }
 </style>
