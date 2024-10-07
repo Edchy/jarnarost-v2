@@ -3,7 +3,12 @@ import Main from "../layouts/Main.astro";
 import Layout from "../layouts/Layout.astro";
 import Showcase from "../components/Showcase.astro";
 import Carousel from "../components/Carousel.astro";
+import Carousels from "../components/Carousels.astro";
 import WordCarousel from "../components/WordCarousel.astro";
+import SlantedGridGallery from "../components/SlantedGridGallery.astro";
+import Shader from "../components/Shader.astro";
+import Shader2 from "../components/Shader2.astro";
+import Shader3 from "../components/Shader3.astro";
 ---
 
 <Layout>
@@ -14,108 +19,75 @@ import WordCarousel from "../components/WordCarousel.astro";
     bg="var(--color-4-dark)"
     transitionName="image-1"
   >
-    <div class="second-col">
-      <!-- <Showcase /> -->
-      <Carousel />
-    </div>
-    <div class="third-col">
-      <div class="wrap">
-        <img src="/images/logos/demeter.avif" alt="" />
-        <div>
-          <h2 class="eko">Ekologiskt</h2>
-          <h2>Biodynamiskt</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi,
-            nobis.
-          </p>
-        </div>
-        <!-- <h2>Demeter</h2> -->
-      </div>
-    </div>
-    <div class="fourth-col">
+    <div class="grid">
       <!-- <WordCarousel /> -->
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur quos
-        exercitationem ex tempora asperiores fugit, incidunt rem ipsum
-        doloremque corporis.
-      </p>
+      <Carousel />
+      <div class="shader-container">
+        <h2><span>EKOLOGISKT</span><span>BIODYNAMISKT</span></h2>
+        <Shader
+          colorIntensity={1}
+          speed={0.4}
+          rippleIntensity={0.2}
+          width="100%"
+          height="100%"
+        />
+      </div>
+      <!-- <Shader3
+          width="100%"
+          height="100vh"
+          imageUrl="/images/coffee/esplabels.avif"
+          colorIntensity={0.2}
+          speed={0.3}
+          chaos={0.5}
+        /> -->
+      <!-- <Shader2
+      width="300px"
+      height="300px"
+      imageUrl="/fail.jpg"
+      colorIntensity={1.2}
+      speed={0.5}
+      chaos={1.0}
+    /> -->
     </div>
+    <!-- <SlantedGridGallery /> -->
   </Main>
 </Layout>
 <style>
-  .second-col {
-    max-width: 100%;
-    height: 100%;
-  }
-  .third-col {
-    display: grid;
-    /* grid-template-columns: repeat(3, 1fr); */
-    /* align-items: center; */
-    /* align-content: center; */
-    /* justify-content: center; */
-    /* justify-items: center; */
-    background: url("./images/andy-wang.avif");
-    background-position: center;
-    background-color: var(--color-brand-2);
-    background-color: var(--color-4-dark);
-    background-blend-mode: darken;
-    & div {
-      margin: 0 auto;
-      .eko {
-        color: var(--color-brand-2);
+  .shader-container {
+    position: relative;
+    & h2 {
+      font-size: var(--size-fluid-4);
+      color: var(--color-brand-2);
+      position: absolute;
+      z-index: 10;
+      pointer-events: none;
+      @media (min-width: 700px) {
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) rotate(-90deg);
       }
     }
+    & span {
+      display: block;
+    }
   }
-  .wrap {
-    /* display: flex;
-    align-items: center; */
-    /* height: 100%; */
-    /* width: 100%; */
+  .grid {
+    position: relative;
     display: grid;
-    font-size: var(--size-fluid-4);
-    padding: 1rem;
-    /* transform: rotate(-2deg); */
-    /* place-content: center; */
-    /* align-items: flex-start; */
-    z-index: 2;
+    /* @media (min-width: 700px) {
+      grid-template-columns: 300px 1fr 1fr;
+    } */
   }
-  .fourth-col {
-    background-color: var(--color-brand-2);
-    /* background-color: var(--color-4-dark); */
-    /* background-blend-mode: luminosity; */
-    /* border-radius: var(--radius-drawn-3); */
-    /* background: url("./images/coffee/brygg.avif"); */
-    /* background-position: center; */
-    background-blend-mode: difference;
-
-    background-size: 200px;
-    background-color: var(--color-brand-2);
+  /* .image-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    max-height: 100vh;
+  
   }
   img {
-    margin: 0 auto;
-    width: 150px;
-    /* transform: rotate(-13deg); */
-    animation: pulse 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-  }
-  p {
-    color: var(--color-light);
-  }
-
-  @keyframes pulse {
-    0% {
-      transform: scale(1);
-    }
-    25% {
-      transform: scale(1.05);
-    }
-    50% {
-      transform: scale(1.1);
-    }
-    75% {
-      transform: scale(1.05);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+  } */
 </style>
