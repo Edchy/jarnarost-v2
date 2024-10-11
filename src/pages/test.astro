@@ -14,25 +14,23 @@ import Shader3 from "../components/Shader3.astro";
 <Layout>
   <Main
     heading="kaffet"
-    color="var(--color-light)"
+    color="var(--color-1)"
     clipBg="var(--color-7)"
     bg="var(--color-4-dark)"
     transitionName="image-1"
   >
     <div class="grid">
-      <WordCarousel />
       <div class="carousel-container">
         <Carousel />
-        <!-- <div class="random-images">
-          <h2>DEMETER</h2>
-          <img src="/images/logos/Logga-Trans.png" alt="" />
-        </div> -->
+        <div class="random-images"></div>
       </div>
+      <WordCarousel />
       <div class="shader-container">
-        <h2>
-          <span>BRYGG</span><span>ESPRESSO</span><span>ESPRESSO GRANDE</span
-          ><span>MELLANROST</span>
-        </h2>
+        <!-- <h2>
+          <span>BRYGG</span><span>ESPRESSO</span><span>MELLANROST</span><span
+            >ESPRESSO GRANDE</span
+          >
+        </h2> -->
         <Shader
           colorIntensity={1}
           speed={0.4}
@@ -45,10 +43,11 @@ import Shader3 from "../components/Shader3.astro";
           height="100%"
           imageUrl="/images/coffee/brygglabels.avif"
           colorIntensity={0.1}
-          speed={1}
-          chaos={1}
+          speed={0.2}
+          chaos={0.2}
         /> -->
       </div>
+
       <!-- <Shader3
           width="100%"
           height="100vh"
@@ -73,8 +72,8 @@ import Shader3 from "../components/Shader3.astro";
 
   <style>
     .random-images {
-      background-color: var(--color-7);
-
+      /* background-color: var(--color-7); */
+      max-height: 30vh;
       & img {
         width: 100px;
       }
@@ -84,6 +83,7 @@ import Shader3 from "../components/Shader3.astro";
     }
     .carousel-container {
       display: grid;
+      /* height: 20vh; */
       /* grid-template-columns: 500px 1fr; */
       /* max-width: 100%; */
       /* background: url("./images/andy-wang.avif");
@@ -96,18 +96,19 @@ import Shader3 from "../components/Shader3.astro";
       /* background: url("./images/decorations/smile.webp"); */
       background-position: center;
       background-size: cover;
-      background-repeat: no-repeat;
+      /* background-repeat: no-repeat; */
       /* background-size: 200px; */
-      /* background-size: 300px; */
       background-color: var(--color-brand-2);
       background-color: var(--color-4-dark);
-      /* background-color: var(--color-6); */
+      background-color: var(--color-7);
+      background-color: var(--color-4-dark);
       background-blend-mode: difference;
       background-blend-mode: color-dodge;
       z-index: 1000;
     }
     .shader-container {
       position: relative;
+      /* height: 80vh; */
       & h2 {
         font-size: var(--size-fluid-4);
         color: var(--color-brand-2);
@@ -131,17 +132,5 @@ import Shader3 from "../components/Shader3.astro";
       grid-template-columns: 300px 1fr 1fr;
     } */
     }
-    /* .image-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    max-height: 100vh;
-  
-  }
-  img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: cover;
-  } */
   </style>
 </Layout>
