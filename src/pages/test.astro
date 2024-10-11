@@ -15,15 +15,24 @@ import Shader3 from "../components/Shader3.astro";
   <Main
     heading="kaffet"
     color="var(--color-light)"
-    clipBg="var(--color-dark)"
+    clipBg="var(--color-7)"
     bg="var(--color-4-dark)"
     transitionName="image-1"
   >
     <div class="grid">
-      <!-- <WordCarousel /> -->
-      <Carousel />
+      <WordCarousel />
+      <div class="carousel-container">
+        <Carousel />
+        <!-- <div class="random-images">
+          <h2>DEMETER</h2>
+          <img src="/images/logos/Logga-Trans.png" alt="" />
+        </div> -->
+      </div>
       <div class="shader-container">
-        <h2><span>EKOLOGISKT</span><span>BIODYNAMISKT</span></h2>
+        <h2>
+          <span>BRYGG</span><span>ESPRESSO</span><span>ESPRESSO GRANDE</span
+          ><span>MELLANROST</span>
+        </h2>
         <Shader
           colorIntensity={1}
           speed={0.4}
@@ -31,6 +40,14 @@ import Shader3 from "../components/Shader3.astro";
           width="100%"
           height="100%"
         />
+        <!-- <Shader3
+          width="100%"
+          height="100%"
+          imageUrl="/images/coffee/brygglabels.avif"
+          colorIntensity={0.1}
+          speed={1}
+          chaos={1}
+        /> -->
       </div>
       <!-- <Shader3
           width="100%"
@@ -49,36 +66,72 @@ import Shader3 from "../components/Shader3.astro";
       chaos={1.0}
     /> -->
     </div>
-    <!-- <SlantedGridGallery /> -->
   </Main>
-</Layout>
-<style>
-  .shader-container {
-    position: relative;
-    & h2 {
-      font-size: var(--size-fluid-4);
-      color: var(--color-brand-2);
-      position: absolute;
-      z-index: 10;
-      pointer-events: none;
-      @media (min-width: 700px) {
-        top: 50%;
-        left: 50%;
-        transform: translateX(-50%) rotate(-90deg);
+  <!-- <section>
+    <SlantedGridGallery />
+  </section> -->
+
+  <style>
+    .random-images {
+      background-color: var(--color-7);
+
+      & img {
+        width: 100px;
       }
     }
-    & span {
-      display: block;
+    section {
+      background-color: var(--color-4);
     }
-  }
-  .grid {
-    position: relative;
-    display: grid;
-    /* @media (min-width: 700px) {
+    .carousel-container {
+      display: grid;
+      /* grid-template-columns: 500px 1fr; */
+      /* max-width: 100%; */
+      /* background: url("./images/andy-wang.avif");
+    background-position: center; */
+      background-color: var(--color-brand-2);
+      /* background-color: var(--color-4-dark); */
+      /* background-blend-mode: luminosity; */
+      /* border-radius: var(--radius-drawn-5); */
+      background: url("./images/andy-wang.avif");
+      /* background: url("./images/decorations/smile.webp"); */
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      /* background-size: 200px; */
+      /* background-size: 300px; */
+      background-color: var(--color-brand-2);
+      background-color: var(--color-4-dark);
+      /* background-color: var(--color-6); */
+      background-blend-mode: difference;
+      background-blend-mode: color-dodge;
+      z-index: 1000;
+    }
+    .shader-container {
+      position: relative;
+      & h2 {
+        font-size: var(--size-fluid-4);
+        color: var(--color-brand-2);
+        position: absolute;
+        z-index: 10;
+        pointer-events: none;
+        @media (min-width: 700px) {
+          top: 20%;
+          left: 50%;
+          transform: translateX(-50%) rotate(-90deg);
+        }
+      }
+      & span {
+        display: block;
+      }
+    }
+    .grid {
+      position: relative;
+      display: grid;
+      /* @media (min-width: 700px) {
       grid-template-columns: 300px 1fr 1fr;
     } */
-  }
-  /* .image-grid {
+    }
+    /* .image-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
@@ -90,4 +143,5 @@ import Shader3 from "../components/Shader3.astro";
     max-height: 100%;
     object-fit: cover;
   } */
-</style>
+  </style>
+</Layout>

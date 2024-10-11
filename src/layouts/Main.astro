@@ -52,11 +52,11 @@ const { heading, transitionName, bg, clipBg, color } = Astro.props;
     display: grid;
     height: 100vh;
     /* align-items: flex-start; */
-    /* overflow-x: clip; */
+    overflow-x: clip;
 
     grid-auto-rows: max-content;
     /* gap: 2rem; */
-    /* -webkit-mask: var(--mask-edge-zig-zag-right); */
+    -webkit-mask: var(--mask-edge-zig-zag-right);
 
     @media (min-width: 700px) {
       grid-auto-rows: auto;
@@ -78,7 +78,7 @@ const { heading, transitionName, bg, clipBg, color } = Astro.props;
     /* background: url("./images/coffee/esplabels.avif"); */
     /* background: url("./urban.jpg"); */
     background-position: center;
-    background-color: var(--color-4-dark);
+    background-color: var(--color-7);
     background-blend-mode: luminosity;
     background-blend-mode: difference;
   }
