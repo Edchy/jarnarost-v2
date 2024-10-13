@@ -1,0 +1,39 @@
+---
+import Shader3 from "./Shader3.astro";
+import SlantedGridGallery from "./SlantedGridGallery.astro";
+
+interface Props {
+  id: string;
+  title: string;
+  imageSrc: string;
+  imageSrcs?: string[];
+}
+
+const { id, imageSrc, title } = Astro.props;
+---
+
+<div popover id={id}>
+  <!-- <img src={imageSrc} alt="bag of coffebeans" />
+  <img src="/images/qr.png" alt="" /> -->
+  <SlantedGridGallery title={title} />
+</div>
+
+<style>
+  [popover] img {
+    max-width: 400px;
+  }
+  [popover] {
+    background-color: var(--color-1);
+    border: none;
+    /* inset: 0; */
+    /* left: 0%; */
+    width: min(80%, 1000px);
+    height: 95%;
+    margin: auto;
+    /* display: flex; */
+    align-items: center;
+  }
+  [popover]::backdrop {
+    background-color: rgba(3, 13, 5, 0.641);
+  }
+</style>

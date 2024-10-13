@@ -26,11 +26,14 @@ import Shader3 from "../components/Shader3.astro";
       </div>
       <WordCarousel />
       <div class="shader-container">
-        <!-- <h2>
-          <span>BRYGG</span><span>ESPRESSO</span><span>MELLANROST</span><span
-            >ESPRESSO GRANDE</span
-          >
-        </h2> -->
+        <!-- <div class="circle-text">
+          <span><pre>  .&nbsp;&otimes;&nbsp;</pre></span>
+          <h2>Ekologiskt.</h2>
+          <span>&nbsp;&otimes;&nbsp;</span>
+          <h2>Biodynamiskt.</h2>
+          <span>&nbsp;&otimes;&nbsp;</span>
+          <h2><pre>Demeter </pre></h2>
+        </div> -->
         <Shader
           colorIntensity={1}
           speed={0.4}
@@ -69,22 +72,32 @@ import Shader3 from "../components/Shader3.astro";
   <!-- <section>
     <SlantedGridGallery />
   </section> -->
+  <script>
+    import CircleType from "circletype";
 
+    new CircleType(document.querySelector(".circle-text"));
+    // new CircleType(document.getElementById("demo2"));
+  </script>
   <style>
+    .grid {
+      position: relative;
+      display: grid;
+      /* @media (min-width: 700px) {
+        grid-template-columns: 300px 1fr 1fr;
+      } */
+    }
     .random-images {
-      /* background-color: var(--color-7); */
-      max-height: 30vh;
+      background-color: var(--color-7);
+      /* max-height: 30vh; */
       & img {
         width: 100px;
       }
     }
-    section {
-      background-color: var(--color-4);
-    }
+
     .carousel-container {
       display: grid;
       /* height: 20vh; */
-      /* grid-template-columns: 500px 1fr; */
+      /* grid-template-columns: 1fr 1fr; */
       /* max-width: 100%; */
       /* background: url("./images/andy-wang.avif");
     background-position: center; */
@@ -108,15 +121,17 @@ import Shader3 from "../components/Shader3.astro";
     }
     .shader-container {
       position: relative;
-      /* height: 80vh; */
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       & h2 {
         font-size: var(--size-fluid-4);
+        font-weight: bold;
         color: var(--color-brand-2);
         position: absolute;
         z-index: 10;
         pointer-events: none;
         @media (min-width: 700px) {
-          top: 20%;
+          top: 10%;
           left: 50%;
           transform: translateX(-50%) rotate(-90deg);
         }
@@ -124,13 +139,6 @@ import Shader3 from "../components/Shader3.astro";
       & span {
         display: block;
       }
-    }
-    .grid {
-      position: relative;
-      display: grid;
-      /* @media (min-width: 700px) {
-      grid-template-columns: 300px 1fr 1fr;
-    } */
     }
   </style>
 </Layout>

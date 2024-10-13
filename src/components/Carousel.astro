@@ -1,19 +1,72 @@
-<div class="scroller" data-direction="left" data-speed="fast">
+---
+import CoffeePopover from "./CoffeePopover.astro";
+---
+
+<div class="scroller" data-direction="right" data-speed="fast">
   <div class="scroller__inner">
-    <h2>BRYGG.</h2>
-    <img src="/images/coffee/brygg.avif" alt="bag of coffebeans" />
-    <h2>ESP.</h2>
-    <img src="/images/coffee/espgrande.avif" alt="bag of coffebeans" />
-    <h2>BRYGG.</h2>
-    <img src="/images/coffee/esp.avif" alt="bag of coffebeans" />
-    <h2>ESP.</h2>
-    <img src="/images/coffee/mellan.avif" alt="bag of coffebeans" />
+    <!-- IMG 1 -->
+    <button popovertarget="popover1" class="img-container">
+      <CoffeePopover
+        title="BRYGG"
+        id="popover1"
+        imageSrc="/images/coffee/brygg.avif"
+      />
+      <h2>BRY<span>gg</span><span class="dot">.</span></h2>
+      <img src="/images/coffee/brygg.avif" alt="bag of coffebeans" />
+    </button>
+
+    <!-- IMG 2 -->
+    <button popovertarget="popover2" class="img-container">
+      <CoffeePopover
+        title="ESP"
+        id="popover2"
+        imageSrc="/images/coffee/brygg.avif"
+      />
+      <h2>ESP<span>resso</span><span class="dot">.</span></h2>
+      <img src="/images/coffee/esp.avif" alt="bag of coffebeans" />
+    </button>
+
+    <!-- IMG 3 -->
+    <button popovertarget="popover3" class="img-container">
+      <CoffeePopover
+        title="MELLAN"
+        id="popover3"
+        imageSrc="/images/coffee/brygg.avif"
+      />
+      <h2>BRY<span>gg</span><span class="dot">.</span></h2>
+      <img src="/images/coffee/mellan.avif" alt="bag of coffebeans" />
+    </button>
+
+    <!-- IMG 4 -->
+    <button popovertarget="popover4" class="img-container">
+      <CoffeePopover
+        title="GRANDE"
+        id="popover4"
+        imageSrc="/images/coffee/brygg.avif"
+      />
+      <h2>ESP<span>resso</span><span class="dot">.</span></h2>
+      <img src="/images/coffee/espgrande.avif" alt="bag of coffebeans" />
+    </button>
   </div>
   <h3>DEMETER</h3>
-  <!-- <img src="/images/logos/demeter.avif" alt="bag of coffebeans" /> -->
 </div>
 
 <style>
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .img-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .dot {
+    font-family: system-ui;
+  }
+
   .scroller {
     display: flex;
     align-items: center;
@@ -28,15 +81,15 @@
     align-items: center;
     gap: 1rem;
     position: absolute;
-    right: 0;
+    left: 0;
     will-change: transform;
   }
+
   .scroller[data-animated="true"] .scroller__inner {
     width: max-content;
     flex-wrap: nowrap;
-    animation: scroll var(--_animation-duration, 40s)
+    animation: scroll var(--_animation-duration, 10s)
       var(--_animation-direction, forwards) linear infinite;
-    animation-play-state: running; /* Ensure the animation runs by default */
   }
 
   .scroller[data-animated="true"] .scroller__inner:hover {
@@ -51,16 +104,12 @@
     --_animation-direction: forwards;
   }
 
-  .scroller[data-animated="true"] .scroller__inner {
-    animation: scroll 40s linear infinite;
-  }
-
   @keyframes scroll {
     0% {
       transform: translateX(0);
     }
     100% {
-      transform: translateX(50%);
+      transform: translateX(-50%);
     }
   }
 
@@ -69,17 +118,24 @@
     white-space: nowrap;
     color: var(--color-1);
   }
+  span {
+    color: black;
+    font-family: "Nacho";
+    font-size: 3rem;
+  }
   h3 {
     font-size: 6rem;
     color: rgba(255, 108, 2, 0.338);
     text-align: center;
-    /* padding-left: 1rem; */
     margin: 0 auto;
   }
   @media (min-width: 700px) {
     h2,
     h3 {
       font-size: 10rem;
+    }
+    span {
+      font-size: 5rem;
     }
   }
 
@@ -99,42 +155,30 @@
 
 <script>
   document.addEventListener("astro:page-load", () => {
-    const scroller = document.querySelector(".scroller") as HTMLElement | null;
-
-    function setupScroller() {
-      if (!scroller) return;
-
-      const scrollerInner = scroller.querySelector(
-        ".scroller__inner"
-      ) as HTMLElement | null;
-      if (!scrollerInner) return;
-
-      // Clone the content
-      const scrollerContent = Array.from(
-        scrollerInner.children
-      ) as HTMLElement[];
-      const scrollerContentWidth = scrollerContent.reduce((acc, item) => {
-        return acc + item.offsetWidth;
-      }, 0);
-
-      // Clone enough times to fill the screen twice
-      const numCopies = Math.ceil(
-        (window.innerWidth * 2) / scrollerContentWidth
-      );
-
-      for (let i = 0; i < numCopies; i++) {
-        scrollerContent.forEach((item) => {
-          const duplicatedItem = item.cloneNode(true) as HTMLElement;
-          duplicatedItem.setAttribute("aria-hidden", "true");
-          scrollerInner.appendChild(duplicatedItem);
-        });
-      }
-
-      scroller.setAttribute("data-animated", "true");
-    }
+    const scroller = document.querySelector<HTMLElement>(".scroller");
 
     if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setupScroller();
+      addAnimation();
+    }
+
+    function addAnimation() {
+      // Ensure scrollers are not null
+      if (!scroller) return;
+
+      scroller.setAttribute("data-animated", "true");
+
+      const scrollerInner =
+        scroller.querySelector<HTMLElement>(".scroller__inner");
+
+      if (!scrollerInner) return; // Ensure scrollerInner is not null
+
+      const scrollerContent = Array.from(scrollerInner.children);
+
+      scrollerContent.forEach((item) => {
+        const duplicatedItem = item.cloneNode(true) as HTMLElement;
+        duplicatedItem.setAttribute("aria-hidden", "true");
+        scrollerInner.appendChild(duplicatedItem);
+      });
     }
   });
 </script>
