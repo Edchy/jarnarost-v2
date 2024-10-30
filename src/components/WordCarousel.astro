@@ -1,17 +1,37 @@
-<div class="carousel-container">
+<div class="word-carousel-container">
   <div class="carousel">
+    <!-- Original set -->
     <span class="carousel-item">ESPRESSO</span>
-    <span class="carousel-item">EKOLOGISKT</span>
+    <span class="carousel-item"
+      ><span class="brand-color">EKO</span>LOGISKT</span
+    >
     <span class="carousel-item">BIODYNAMISKT</span>
     <span class="carousel-item">BRYGG</span>
     <span class="carousel-item">DEMETER</span>
+    <!-- Duplicate set for seamless loop -->
     <span class="carousel-item">ESPRESSO</span>
-    <span class="carousel-item">EKOLOGISKT</span>
+    <span class="carousel-item"
+      ><span class="brand-color">EKO</span>LOGISKT</span
+    >
     <span class="carousel-item">BIODYNAMISKT</span>
     <span class="carousel-item">BRYGG</span>
     <span class="carousel-item">DEMETER</span>
+  </div>
+  <!-- Clone for seamless infinite scroll -->
+  <div class="carousel" aria-hidden="true">
+    <!-- Original set -->
     <span class="carousel-item">ESPRESSO</span>
-    <span class="carousel-item">EKOLOGISKT</span>
+    <span class="carousel-item"
+      ><span class="brand-color">EKO</span>LOGISKT</span
+    >
+    <span class="carousel-item">BIODYNAMISKT</span>
+    <span class="carousel-item">BRYGG</span>
+    <span class="carousel-item">DEMETER</span>
+    <!-- Duplicate set for seamless loop -->
+    <span class="carousel-item">ESPRESSO</span>
+    <span class="carousel-item"
+      ><span class="brand-color">EKO</span>LOGISKT</span
+    >
     <span class="carousel-item">BIODYNAMISKT</span>
     <span class="carousel-item">BRYGG</span>
     <span class="carousel-item">DEMETER</span>
@@ -19,33 +39,46 @@
 </div>
 
 <style>
-  .carousel-container {
-    /* max-width: 90px; */
-    background-color: var(--color-4-dark);
-    /* font-family: var(--font-secondary-heading); */
-    /* font-family: "Nacho"; */
-    /* font-size: 2.5rem; */
-    overflow-x: hidden;
-    /* grid-column: span 2; */
+  .brand-color {
+    color: var(--color-brand-2);
+  }
+
+  .word-carousel-container {
+    background-color: var(--color-dark);
+    background-color: var(--color-brand-2);
+    background-position: right;
+    background-size: cover;
+    font-size: var(--step-1);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    /* height: 30px; */
   }
 
   .carousel {
-    display: inline-block;
+    display: flex;
     white-space: nowrap;
-    animation: scroll2 20s linear infinite forwards;
+    animation: scroll2 20s linear infinite;
+    font-family: var(--font-primary-heading);
+    color: white;
   }
 
   .carousel-item {
-    display: inline-block;
+    /* display: inline-block; */
     padding-inline: 2rem;
   }
 
   @keyframes scroll2 {
     0% {
-      transform: translateX(0%);
+      transform: translateX(0);
     }
     100% {
-      transform: translateX(-50%);
+      transform: translateX(-100%);
     }
+  }
+
+  /* Optional: Pause on hover */
+  .word-carousel-container:hover .carousel {
+    animation-play-state: paused;
   }
 </style>

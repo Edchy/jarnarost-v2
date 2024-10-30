@@ -20,7 +20,7 @@ const {
 ---
 
 <div
-  id="shader"
+  id="shader3"
   data-image-url={imageUrl}
   data-color-intensity={colorIntensity}
   data-speed={speed}
@@ -38,7 +38,7 @@ const {
   let mousePressed = false;
 
   function init() {
-    const container = document.getElementById("shader");
+    const container = document.getElementById("shader3");
     const rect = container.getBoundingClientRect();
 
     const colorIntensity = parseFloat(
@@ -267,15 +267,25 @@ const {
 </script>
 
 <style define:vars={{ width, height }}>
-  #shader {
+  #shader3 {
     width: var(--width);
     height: var(--height);
     margin: 0;
     padding: 0;
     cursor: pointer;
+    position: relative;
+    grid-row: span 2;
+  }
+  #shader3::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    /* background-image: url("/images/andy-wang.avif"); */
+    background-color: oklch(from var(--color-4-dark) calc(1 - 0.7) c h / 0.6);
+    background-blend-mode: color-burn;
   }
 
-  #shader canvas {
+  #shader3 canvas {
     width: 100% !important;
     height: 100% !important;
   }

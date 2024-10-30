@@ -5,8 +5,8 @@ import { ViewTransitions } from "astro:transitions";
 import Footer from "./Footer.astro";
 
 interface Props {
-  title?: string;
-  description?: string;
+  title: string;
+  description: string;
   image?: string;
   canonicalURL?: string;
 }
@@ -28,6 +28,11 @@ const {
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta
+      name="keywords"
+      content="kaffe, rosteri, ekologiskt, biodynamiskt, demeter, brygg, espresso"
+    />
+    <meta name="author" content="Järna Rosteri1" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />

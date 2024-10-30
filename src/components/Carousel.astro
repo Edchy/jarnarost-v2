@@ -20,7 +20,7 @@ import CoffeePopover from "./CoffeePopover.astro";
       <CoffeePopover
         title="ESP"
         id="popover2"
-        imageSrc="/images/coffee/brygg.avif"
+        imageSrc="/images/coffee/esp.avif"
       />
       <h2>ESP<span>resso</span><span class="dot">.</span></h2>
       <img src="/images/coffee/esp.avif" alt="bag of coffebeans" />
@@ -31,7 +31,7 @@ import CoffeePopover from "./CoffeePopover.astro";
       <CoffeePopover
         title="MELLAN"
         id="popover3"
-        imageSrc="/images/coffee/brygg.avif"
+        imageSrc="/images/coffee/mellan.avif"
       />
       <h2>BRY<span>gg</span><span class="dot">.</span></h2>
       <img src="/images/coffee/mellan.avif" alt="bag of coffebeans" />
@@ -42,7 +42,7 @@ import CoffeePopover from "./CoffeePopover.astro";
       <CoffeePopover
         title="GRANDE"
         id="popover4"
-        imageSrc="/images/coffee/brygg.avif"
+        imageSrc="/images/coffee/espgrande.avif"
       />
       <h2>ESP<span>resso</span><span class="dot">.</span></h2>
       <img src="/images/coffee/espgrande.avif" alt="bag of coffebeans" />
@@ -88,7 +88,7 @@ import CoffeePopover from "./CoffeePopover.astro";
   .scroller[data-animated="true"] .scroller__inner {
     width: max-content;
     flex-wrap: nowrap;
-    animation: scroll var(--_animation-duration, 10s)
+    animation: scroll var(--_animation-duration, 15s)
       var(--_animation-direction, forwards) linear infinite;
   }
 
@@ -116,26 +116,32 @@ import CoffeePopover from "./CoffeePopover.astro";
   h2 {
     font-size: 6rem;
     white-space: nowrap;
-    color: var(--color-1);
+    color: var(--color-brand-2);
+    color: var(--color-4-dark);
+    padding-right: 2rem;
+    padding-left: 1rem;
+    /* font-family: "Betelgeuse"; */
   }
   span {
-    color: black;
-    font-family: "Nacho";
+    color: rgb(255, 255, 255);
+    font-family: "Betelgeuse";
     font-size: 3rem;
   }
   h3 {
     font-size: 6rem;
-    color: rgba(255, 108, 2, 0.338);
+    color: rgba(255, 255, 255, 0.172);
     text-align: center;
     margin: 0 auto;
   }
   @media (min-width: 700px) {
-    h2,
+    h2 {
+      font-size: 10rem;
+    }
     h3 {
       font-size: 10rem;
     }
     span {
-      font-size: 5rem;
+      font-size: 3rem;
     }
   }
 
@@ -143,13 +149,13 @@ import CoffeePopover from "./CoffeePopover.astro";
     width: 300px;
     height: 300px;
     object-fit: contain;
-    transform: rotate(90deg);
+    transform: rotate(45deg);
     transition: transform 0.3s ease;
     z-index: 999;
   }
 
   .scroller__inner img:hover {
-    transform: rotate(0deg) translateY(100px) scale(1.25);
+    transform: rotate(12deg) translateY(100px) scale(1.55);
   }
 </style>
 

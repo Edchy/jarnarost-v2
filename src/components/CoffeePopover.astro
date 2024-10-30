@@ -13,17 +13,49 @@ const { id, imageSrc, title } = Astro.props;
 ---
 
 <div popover id={id}>
-  <!-- <img src={imageSrc} alt="bag of coffebeans" />
-  <img src="/images/qr.png" alt="" /> -->
-  <SlantedGridGallery title={title} />
+  <div class="popover-wrapper">
+    <h2>{title}</h2>
+    <!-- <img src="/images/logos/demeter.avif" alt="" /> -->
+    <img src={imageSrc} alt="bag of coffebeans" />
+    <p>
+      Pa våran resa genom södra Indien hittade vi den biodynamiska gården Poabs.
+      Gården ligger högt i bergen och drivs som ett slutet kretslopp där allt
+      tas tillvara på. Smaken är fyllig och väl balanserad med härligt söta
+      toner. Omsorgsfullt rostat!
+    </p>
+    <!-- <img src="/images/qr.png" alt="" /> -->
+    <!-- <SlantedGridGallery title={title} /> -->
+  </div>
 </div>
 
 <style>
+  .popover-wrapper {
+    display: grid;
+    padding: 2rem;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding-top: 5rem;
+    & h2 {
+      font-size: 15rem;
+      text-align: left;
+      color: var(--color-light);
+    }
+    & p {
+      color: var(--color-light);
+      text-align: left;
+    }
+    & img {
+      align-self: center;
+      justify-self: center;
+    }
+  }
   [popover] img {
-    max-width: 400px;
+    max-width: 200px;
   }
   [popover] {
-    background-color: var(--color-1);
+    background: url("/images/andy-wang.avif");
+    background-color: var(--color-4-dark);
+    background-blend-mode: color-burn;
     border: none;
     /* inset: 0; */
     /* left: 0%; */
@@ -31,7 +63,7 @@ const { id, imageSrc, title } = Astro.props;
     height: 95%;
     margin: auto;
     /* display: flex; */
-    align-items: center;
+    /* align-items: center; */
   }
   [popover]::backdrop {
     background-color: rgba(3, 13, 5, 0.641);
