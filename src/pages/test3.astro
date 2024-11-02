@@ -9,51 +9,37 @@ import Shader2 from "../components/Shader2.astro";
 import Shader3 from "../components/Shader3.astro";
 import Footer from "../layouts/Footer.astro";
 import Tractor from "../components/Tractor.astro";
-import SpaceParticles from "../components/SpaceParticles.astro";
 ---
 
 <Layout title="Kaffe" description="">
   <Main
     heading="kaffet"
-    color="var(--color-7  )"
+    color="var(--color-brand-2)"
     clipBg="var(--color-brand-2)"
-    bg="var(--color-light)"
+    bg="var(--color-dark)"
     transitionName="image-1"
   >
     <div class="grid">
-      <div class="carousel-container">
-        <Carousel
-          headingColor="var(--color-brand-2)"
-          spanColor="var(--color-4-dark)"
-        />
+      <div class="carousel-container container">
+        <Carousel split={false} />
       </div>
-      <WordCarousel bg="" />
+      <WordCarousel />
       <div class="shader-container">
-        <!-- <div class="circle-text">
-          <span><pre>  .&nbsp;&otimes;&nbsp;</pre></span>
-          <h2>Ekologiskt.</h2>
-          <span>&nbsp;&otimes;&nbsp;</span>
-          <h2>Biodynamiskt.</h2>
-          <span>&nbsp;&otimes;&nbsp;</span>
-          <h2><pre>Demeter </pre></h2>
-        </div> -->
-        <!-- <Shader
-          colorIntensity={1}
-          speed={0.4}
-          rippleIntensity={0.2}
-          width="100%"
-          height="100%"
-        /> -->
-
-        <!-- <Shader3
+        <Shader3
           width="100%"
           height="100%"
           imageUrl="/images/coffee/brygglabels.avif"
           colorIntensity={0.3}
           speed={0.2}
           chaos={0.4}
-        /> -->
-        <!-- <SpaceParticles /> -->
+        />
+        <Shader
+          colorIntensity={1}
+          speed={0.4}
+          rippleIntensity={0.2}
+          width="100%"
+          height="100%"
+        />
 
         <section class="mini-showcase">
           <div>
@@ -77,49 +63,11 @@ import SpaceParticles from "../components/SpaceParticles.astro";
             </button>
           </div>
         </section>
-        <section class="overlay-text">
-          <h2>
-            WWW
-            <img
-              width="200"
-              src="/images/logos/demeter.avif"
-              alt="bag of coffebeans"
-            />
-          </h2>
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum,
-            in.
-          </p>
-        </section>
       </div>
-
-      <!-- <Shader3
-          width="100%"
-          height="100vh"
-          imageUrl="/images/coffee/esplabels.avif"
-          colorIntensity={0.2}
-          speed={0.3}
-          chaos={0.5}
-        /> -->
-      <!-- <Shader2
-      width="300px"
-      height="300px"
-      imageUrl="/fail.jpg"
-      colorIntensity={1.2}
-      speed={0.5}
-      chaos={1.0}
-    /> -->
     </div>
   </Main>
-
-  <!-- <Footer bg="var(--color-4-dark)" color="var(--color-brand-2)" /> -->
 </Layout>
-<!-- <script>
-  import CircleType from "circletype";
-  document.addEventListener("astro:page-load", () => {
-    new CircleType(document.querySelector(".circle-text"));
-  });
-</script> -->
+
 <style>
   .mini-showcase {
     position: absolute;
@@ -127,11 +75,20 @@ import SpaceParticles from "../components/SpaceParticles.astro";
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    top: 10px;
+    /* top: 0; */
     & button {
       background: none;
       width: 100px;
       border: none;
+      cursor: pointer;
+      transition:
+        scale 0.2s ease,
+        rotate 0.2s ease;
+      &:hover {
+        scale: 2;
+        rotate: 12deg;
+        z-index: 2;
+      }
     }
 
     & div {
@@ -142,7 +99,7 @@ import SpaceParticles from "../components/SpaceParticles.astro";
       /* gap: 2rem; */
       width: 100%;
       & img {
-        width: calc(4vw + 1rem);
+        width: 100%;
       }
     }
   }
@@ -154,15 +111,56 @@ import SpaceParticles from "../components/SpaceParticles.astro";
     }
   }
 
-  /* .circle-text {
-    font-size: 1rem;
-    color: rgb(241, 22, 190);
+  /* From Uiverse.io by escannord */
+  .container {
+    /* width: 100%;
+    height: 100%; */
+    --color-1: var(--color-light);
+    --color-2: var(--color-dark);
+    --bg: linear-gradient(
+        45deg,
+        var(--color-2) 25%,
+        transparent 25%,
+        transparent 75%,
+        var(--color-2) 75%,
+        var(--color-2)
+      ),
+      linear-gradient(
+        45deg,
+        var(--color-2) 25%,
+        var(--color-1) 25%,
+        var(--color-1) 75%,
+        var(--color-2) 75%,
+        var(--color-2)
+      );
+    --bgsize: 60px 60px;
+    --bgposition: 0 0, 30px 30px;
+    background-color: white;
+    background-image: var(--bg);
+    background-size: var(--bgsize);
+    background-position: var(--bgposition);
+    position: relative;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    overflow: clip;
+    box-shadow: inset 0px 0px 500px rgb(15, 15, 15);
+  }
+
+  .container::before {
+    content: "";
+    width: 100%;
+    height: 150%;
+    box-shadow:
+      0px -25px 200px black,
+      inset 0px 100px 500px rgba(15, 15, 15, 0.883);
     position: absolute;
-    top: -70%;
-    left: 20%;
-    z-index: 10000;
-    animation: spin 20s infinite forwards;
-  } */
+    top: 55%;
+    background-image: var(--bg);
+    background-size: var(--bgsize);
+    background-position: var(--bgposition);
+    transform-origin: top;
+    transform: rotateX(80deg);
+  }
 
   .carousel-container {
     /* grid-column: 1 / -1; */
@@ -175,24 +173,38 @@ import SpaceParticles from "../components/SpaceParticles.astro";
     /* background: url("./images/andy-wang.avif");
     background-position: center; */
     background-color: var(--color-brand-2);
-    /* background-color: var(--color-4-dark); */
     /* background-blend-mode: luminosity; */
     /* border-radius: var(--radius-drawn-5); */
-    background: url("/images/andy-wang.avif");
-    background: url("/images/urban.jpg");
+    /* background: url("/images/andy-wang.avif");
+    background: url("/images/urban.jpg"); */
     /* background: url("/images/gallery/img2.avif"); */
-    background-position: center;
-    background-size: cover;
+    /* background-position: center;
+    background-size: cover; */
     /* background-repeat: no-repeat; */
     /* background-size: 200px; */
     background-color: var(--color-4-dark);
     background-color: var(--color-7);
-    background-color: var(--color-brand-2);
     background-color: var(--color-4-dark);
-    background-color: var(--color-light);
+    background-color: var(--color-brand-2);
+    background-color: var(--color-dark);
     background-blend-mode: color-dodge;
     /* background-blend-mode: difference; */
     /* background-blend-mode: darken; */
+    /* Add your background pattern here */
+    background-image: radial-gradient(
+      rgba(253, 253, 253, 0.079) 2px,
+      transparent 0
+    );
+    background-size: 30px 30px;
+    background-position: -5px -5px;
+    /* background: repeating-radial-gradient(
+      circle at 50%,
+      var(--color-4-dark),
+      var(--color-brand-2) 1em,
+      white 1em,
+      white 2em
+    ); */
+
     z-index: 1000;
   }
   .shader-container {
@@ -204,24 +216,5 @@ import SpaceParticles from "../components/SpaceParticles.astro";
     display: grid;
     align-items: center;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 25vh 1fr;
-    .overlay-text {
-      border: 1px solid white;
-      font-size: var(--size-fluid-4);
-      font-weight: bold;
-      color: var(--color-brand-2);
-      position: absolute;
-      z-index: 10;
-      pointer-events: none;
-      top: 10%;
-      left: 75%;
-      transform: translateX(-90%);
-      & p {
-        color: white;
-      }
-    }
-    & span {
-      display: block;
-    }
   }
 </style>

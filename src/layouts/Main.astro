@@ -3,6 +3,8 @@ import Layout from "./Layout.astro";
 import BackBtn from "../components/BackBtn.astro";
 import { fade } from "astro:transitions";
 import { slide } from "astro:transitions";
+import Shader from "../components/Shader.astro";
+import HomeLogo from "../components/HomeLogo.astro";
 
 interface Props {
   heading: string;
@@ -17,8 +19,17 @@ const { heading, transitionName, bg, clipBg, color } = Astro.props;
 
 <main class="clip-bg">
   <!-- <BackBtn /> -->
+  <HomeLogo />
   <div class="grid">
     <div class="heading-container">
+      <!-- <Shader
+        colorIntensity={1}
+        speed={0.4}
+        rippleIntensity={0.2}
+        width="100%"
+        height="100%"
+      /> -->
+
       <h1
         transition:animate={slide({ duration: "1s" })}
         transition:name={`card-title-${transitionName}`}
@@ -33,11 +44,11 @@ const { heading, transitionName, bg, clipBg, color } = Astro.props;
 <style define:vars={{ clipBg, bg, color }}>
   .dot {
     color: var(--color-3);
-    animation: hueRotate 5s infinite;
+    animation: hueRotate 1s infinite;
     font-family: Inter, sans-serif;
   }
   main {
-    overflow: clip;
+    /* overflow-x: hidden; */
   }
   .clip-bg {
     background-color: var(--clipBg);
@@ -46,45 +57,51 @@ const { heading, transitionName, bg, clipBg, color } = Astro.props;
 
   .grid {
     background-color: var(--bg);
-    color: var(--color-3);
     color: var(--color);
     width: min(100%, 1500px);
     margin-inline: auto;
     display: grid;
-    height: 100vh;
-    /* grid-auto-rows: max-content; */
+    min-height: 100vh;
+    /* align-items: flex-start; */
+    overflow-x: clip;
+    grid-auto-rows: max-content;
     /* gap: 2rem; */
-    /* -webkit-mask: var(--mask-edge-zig-zag-right); */
+    /* -webkit-mask: var(--mask-edge-zig-zag-left); */
 
     @media (min-width: 700px) {
-      /* grid-auto-rows: auto; */
-      grid-template-columns: minmax(160px, 250px) 250px 1fr minmax(200px, 1fr);
+      grid-auto-rows: auto;
+      /* grid-template-rows: 1fr max-content 1fr; */
+      grid-template-columns: min(200px, 18vw) 1fr;
     }
   }
 
   .heading-container {
     position: relative;
     /* width: 100%; */
-    height: 100%;
+    /* height: 100%; */
     overflow: hidden;
-    z-index: 100;
-    background-color: var(--color-8);
+    text-align: center;
+
     /* -webkit-mask: var(--mask-edge-zig-zag-right); */
-    background: url("./images/andy-wang.avif");
-    background: url("./images/coffee/esplabels.avif");
+    /* background: url("./images/coffee/esplabels.avif"); */
+    /* background: url("./images/andy-wang.avif"); */
+    /* background: url("./urban.jpg"); */
+    /* background-color: var(--color-brand-2);
+    background-color: var(--color-dark); */
     background-position: center;
-    background-color: var(--color-brand-2);
     /* background-color: var(--color-4-dark); */
-    background-blend-mode: luminosity;
     background-blend-mode: difference;
+    background-blend-mode: luminosity;
   }
   h1 {
     /* animation: hueRotate 15s infinite; */
-
-    font-size: min(15rem, 1rem + 20vw);
-    z-index: 12;
+    font-size: 3rem;
+    /* z-index: 1000; */
     /* padding-top: 2rem; */
+    line-height: 1;
     @media (min-width: 700px) {
+      /* line-height: 0; */
+      font-size: min(10rem, 2rem + 15vw);
       padding-top: 0;
       position: absolute;
       top: 50%;

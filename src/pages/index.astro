@@ -8,12 +8,12 @@ import { slide } from "astro:transitions";
 ---
 
 <Layout
-  title="Järna Rosteri"
-  description="Järna Rosteri | Ekologiskt, Biodynamiskt och omsorgsfullt rostat kaffe."
+  title=""
+  description="Järna Rosteri | Ekologiskt och Biodynamiskt kaffe."
   image="/images/Logga-Trans.png"
 >
   <main>
-    <img class="full-w-image" src="/images/gallery/img5.avif" alt="" />
+    <!-- <img class="full-w-image" src="/images/gallery/img5.avif" alt="" /> -->
     <h1 class="visually-hidden">Järna Rosteri</h1>
     <nav>
       <menu class="card-links">
@@ -21,13 +21,15 @@ import { slide } from "astro:transitions";
           body="kaffet"
           id="image-0"
           hoverBg="var(--color-brand-2)"
+          color="var(--color-4-dark)"
           href="./kaffe"
           imageSrc="/images/gallery/img1.avif"
         />
         <Card
-          body="#"
+          body="#instagram"
           id="image-1"
           hoverBg="var(--color-4-dark)"
+          color="var(--color-brand-2)"
           href="./test"
           imageSrc="/images/gallery/img2.avif"
         />
@@ -35,6 +37,7 @@ import { slide } from "astro:transitions";
           body="rosteriet"
           id="image-2"
           hoverBg="var(--color-brand-2)"
+          color="var(--color-4-dark)"
           href="./rosteriet"
           imageSrc="/images/gallery/img3.avif"
         />
@@ -42,6 +45,7 @@ import { slide } from "astro:transitions";
           body="!"
           id="image-3"
           hoverBg="var(--color-4-dark)"
+          color="var(--color-brand-2)"
           href="#"
           imageSrc="/images/gallery/img4.avif"
         />
@@ -49,13 +53,15 @@ import { slide } from "astro:transitions";
           body="kontakt"
           id="image-4"
           hoverBg="var(--color-brand-2)"
-          href="mailto:info@jarnaroster.se"
+          color="var(--color-4-dark)"
+          href="./kontakt2"
           imageSrc="/images/gallery/img5.avif"
         />
         <Card
           body="?"
           id="image-5"
           hoverBg="var(--color-4-dark)"
+          color="var(--color-brand-2)"
           href="#"
           imageSrc="/images/gallery/img6.avif"
         />
@@ -100,7 +106,7 @@ import { slide } from "astro:transitions";
     margin: -1px;
     border: 0; */
   }
-  .full-w-image {
+  /* .full-w-image {
     position: fixed;
     top: 0;
     left: 0;
@@ -109,7 +115,7 @@ import { slide } from "astro:transitions";
     object-fit: cover;
     z-index: 9999;
     transition: opacity 1s ease-out;
-  }
+  } */
   .fade-out {
     opacity: 0;
   }

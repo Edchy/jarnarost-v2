@@ -57,7 +57,7 @@ img {
   --color-brand-2: #ef8338;
   --color-1: #00ffa3;
   --color-1-dark: oklch(from var(--color-1) calc(1 - 0.4) c h);
-  --color-2: #ff8901;
+  --color-2: #ef8338;
   --color-3: #ff54d2;
   --color-4: #66a3e0;
   --color-4-dark: #3d64a0;
@@ -127,6 +127,7 @@ body {
   background-color: var(--color-light);
   color: var(--color-dark);
   /* background-color: #fff; */
+  /* max-height: 100vh; */
 }
 
 /* main {
