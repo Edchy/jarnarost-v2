@@ -4,6 +4,7 @@ import BackBtn from "../components/BackBtn.astro";
 import { fade } from "astro:transitions";
 import { slide } from "astro:transitions";
 import Shader from "../components/Shader.astro";
+import HomeLogo from "../components/HomeLogo.astro";
 
 interface Props {
   heading: string;
@@ -17,7 +18,8 @@ const { heading, transitionName, bg, clipBg, color } = Astro.props;
 ---
 
 <main class="clip-bg">
-  <BackBtn />
+  <!-- <BackBtn /> -->
+  <HomeLogo />
   <div class="grid">
     <div class="heading-container">
       <!-- <Shader
@@ -41,8 +43,8 @@ const { heading, transitionName, bg, clipBg, color } = Astro.props;
 
 <style define:vars={{ clipBg, bg, color }}>
   .dot {
-    color: var(--color-1);
-    animation: hueRotate 5s infinite;
+    color: var(--color-3);
+    animation: hueRotate 1s infinite;
     font-family: Inter, sans-serif;
   }
   main {
@@ -78,19 +80,18 @@ const { heading, transitionName, bg, clipBg, color } = Astro.props;
     /* width: 100%; */
     /* height: 100%; */
     overflow: hidden;
-
     text-align: center;
 
-    background-color: var(--color-4-dark);
-    background-color: var(--color-brand-2);
     /* -webkit-mask: var(--mask-edge-zig-zag-right); */
-    /* background: url("./images/andy-wang.avif"); */
     /* background: url("./images/coffee/esplabels.avif"); */
+    /* background: url("./images/andy-wang.avif"); */
     /* background: url("./urban.jpg"); */
+    /* background-color: var(--color-brand-2);
+    background-color: var(--color-dark); */
     background-position: center;
-    /* background-color: var(--color-7); */
-    background-blend-mode: luminosity;
+    /* background-color: var(--color-4-dark); */
     background-blend-mode: difference;
+    background-blend-mode: luminosity;
   }
   h1 {
     /* animation: hueRotate 15s infinite; */

@@ -1,54 +1,67 @@
+---
+import Icon from "./Icon.astro";
+interface Props {
+  bg?: string;
+}
+
+const { bg } = Astro.props;
+---
+
 <div class="word-carousel-container">
   <div class="carousel">
     <!-- Original set -->
-    <span class="carousel-item">ESPRESSO</span>
-    <span class="carousel-item"
-      ><span class="brand-color">EKO</span>LOGISKT</span
-    >
-    <span class="carousel-item">BIODYNAMISKT</span>
-    <span class="carousel-item">BRYGG</span>
-    <span class="carousel-item">DEMETER</span>
+
+    <span class="carousel-item brand-color">ESPRESSO</span>
+    <span class="carousel-item brand-color2">EKOLOGISKT </span>
+    <span class="carousel-item brand-color3">BIODYNAMISKT</span>
+    <span class="carousel-item brand-color4">BRYGG</span>
+    <span class="carousel-item brand-color5">DEMETER</span>
     <!-- Duplicate set for seamless loop -->
-    <span class="carousel-item">ESPRESSO</span>
-    <span class="carousel-item"
-      ><span class="brand-color">EKO</span>LOGISKT</span
-    >
-    <span class="carousel-item">BIODYNAMISKT</span>
-    <span class="carousel-item">BRYGG</span>
-    <span class="carousel-item">DEMETER</span>
+    <span class="carousel-item brand-color">ESPRESSO</span>
+    <span class="carousel-item brand-color2">EKOLOGISKT</span>
+    <span class="carousel-item brand-color3">BIODYNAMISKT</span>
+    <span class="carousel-item brand-color4">BRYGG</span>
+    <span class="carousel-item brand-color5">DEMETER</span>
   </div>
   <!-- Clone for seamless infinite scroll -->
   <div class="carousel" aria-hidden="true">
     <!-- Original set -->
-    <span class="carousel-item">ESPRESSO</span>
-    <span class="carousel-item"
-      ><span class="brand-color">EKO</span>LOGISKT</span
-    >
-    <span class="carousel-item">BIODYNAMISKT</span>
-    <span class="carousel-item">BRYGG</span>
-    <span class="carousel-item">DEMETER</span>
+    <span class="carousel-item brand-color">ESPRESSO</span>
+    <span class="carousel-item brand-color2">EKOLOGISKT</span>
+    <span class="carousel-item brand-color3">BIODYNAMISKT</span>
+    <span class="carousel-item brand-color4">BRYGG</span>
+    <span class="carousel-item brand-color5">DEMETER</span>
     <!-- Duplicate set for seamless loop -->
-    <span class="carousel-item">ESPRESSO</span>
-    <span class="carousel-item"
-      ><span class="brand-color">EKO</span>LOGISKT</span
-    >
-    <span class="carousel-item">BIODYNAMISKT</span>
-    <span class="carousel-item">BRYGG</span>
-    <span class="carousel-item">DEMETER</span>
+    <span class="carousel-item brand-color">ESPRESSO</span>
+    <span class="carousel-item brand-color2">EKOLOGISKT</span>
+    <span class="carousel-item brand-color3">BIODYNAMISKT</span>
+    <span class="carousel-item brand-color4">BRYGG</span>
+    <span class="carousel-item brand-color5">DEMETER</span>
   </div>
 </div>
-
-<style>
+<style define:vars={{ bg }}>
   .brand-color {
+    color: var(--color-4);
+  }
+  .brand-color2 {
+    color: var(--color-1);
+  }
+  .brand-color3 {
     color: var(--color-brand-2);
+  }
+  .brand-color4 {
+    color: var(--color-3);
+  }
+  .brand-color5 {
+    color: var(--color-6);
   }
 
   .word-carousel-container {
-    background-color: var(--color-dark);
     background-color: var(--color-brand-2);
+    background-color: var(--bg);
     background-position: right;
     background-size: cover;
-    font-size: var(--step-1);
+    font-size: var(--step-0);
     overflow: hidden;
     position: relative;
     display: flex;
@@ -61,11 +74,13 @@
     animation: scroll2 20s linear infinite;
     font-family: var(--font-primary-heading);
     color: white;
+    align-items: center;
   }
 
   .carousel-item {
     /* display: inline-block; */
     padding-inline: 2rem;
+    display: flex;
   }
 
   @keyframes scroll2 {

@@ -9,24 +9,26 @@ import Shader2 from "../components/Shader2.astro";
 import Shader3 from "../components/Shader3.astro";
 import Footer from "../layouts/Footer.astro";
 import Tractor from "../components/Tractor.astro";
+import SpaceParticles from "../components/SpaceParticles.astro";
 ---
 
 <Layout title="Kaffe" description="">
   <Main
     heading="kaffet"
-    color="var(--color-light)"
+    color="var(--color-7  )"
     clipBg="var(--color-brand-2)"
-    bg="var(--color-4-dark)"
+    bg="var(--color-light)"
     transitionName="image-1"
   >
     <div class="grid">
       <div class="carousel-container">
-        <Carousel />
+        <Carousel
+          headingColor="var(--color-brand-2)"
+          spanColor="var(--color-4-dark)"
+        />
       </div>
-      <WordCarousel />
+      <WordCarousel bg="" />
       <div class="shader-container">
-        <!--?xml version="1.0" encoding="UTF-8"?-->
-
         <!-- <div class="circle-text">
           <span><pre>  .&nbsp;&otimes;&nbsp;</pre></span>
           <h2>Ekologiskt.</h2>
@@ -35,63 +37,59 @@ import Tractor from "../components/Tractor.astro";
           <span>&nbsp;&otimes;&nbsp;</span>
           <h2><pre>Demeter </pre></h2>
         </div> -->
-        <Shader
+        <!-- <Shader
           colorIntensity={1}
           speed={0.4}
           rippleIntensity={0.2}
           width="100%"
           height="100%"
-        />
+        /> -->
 
-        <Shader3
+        <!-- <Shader3
           width="100%"
           height="100%"
           imageUrl="/images/coffee/brygglabels.avif"
           colorIntensity={0.3}
           speed={0.2}
           chaos={0.4}
-        />
-        <section>
-          <h3>ag</h3>
-        </section>
-        <!-- <div>
-          <h3>gawls</h3>
-          <img width="200" src="/images/decorations/mugz.avif" alt="" />
-        </div> -->
+        /> -->
+        <!-- <SpaceParticles /> -->
+
         <section class="mini-showcase">
           <div>
             <button popovertarget="popover1">
               <img
-                style="rotate: -15deg"
                 src="/images/coffee/brygg.avif"
                 alt="bag of coffebeans"
               /></button
             >
             <button popovertarget="popover2">
-              <img
-                style="rotate: 45deg"
-                src="/images/coffee/esp.avif"
-                alt="bag of coffebeans"
-              />
+              <img src="/images/coffee/esp.avif" alt="bag of coffebeans" />
             </button>
             <button popovertarget="popover3">
-              <img
-                style="rotate: 200deg"
-                src="/images/coffee/mellan.avif"
-                alt="bag of coffebeans"
-              />
+              <img src="/images/coffee/mellan.avif" alt="bag of coffebeans" />
             </button>
             <button popovertarget="popover4">
               <img
-                style="rotate: 55deg"
                 src="/images/coffee/espgrande.avif"
                 alt="bag of coffebeans"
               />
             </button>
           </div>
         </section>
-        <section>
-          <h2>aghw</h2>
+        <section class="overlay-text">
+          <h2>
+            WWW
+            <img
+              width="200"
+              src="/images/logos/demeter.avif"
+              alt="bag of coffebeans"
+            />
+          </h2>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum,
+            in.
+          </p>
         </section>
       </div>
 
@@ -191,6 +189,7 @@ import Tractor from "../components/Tractor.astro";
     background-color: var(--color-7);
     background-color: var(--color-brand-2);
     background-color: var(--color-4-dark);
+    background-color: var(--color-light);
     background-blend-mode: color-dodge;
     /* background-blend-mode: difference; */
     /* background-blend-mode: darken; */
@@ -206,17 +205,19 @@ import Tractor from "../components/Tractor.astro";
     align-items: center;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 25vh 1fr;
-    & h2 {
+    .overlay-text {
+      border: 1px solid white;
       font-size: var(--size-fluid-4);
       font-weight: bold;
       color: var(--color-brand-2);
       position: absolute;
       z-index: 10;
       pointer-events: none;
-      @media (min-width: 700px) {
-        top: 10%;
-        left: 50%;
-        transform: translateX(-50%) rotate(-90deg);
+      top: 10%;
+      left: 75%;
+      transform: translateX(-90%);
+      & p {
+        color: white;
       }
     }
     & span {

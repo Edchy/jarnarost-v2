@@ -1,8 +1,28 @@
 ---
 import CoffeePopover from "./CoffeePopover.astro";
+import CoffeePopover2 from "./CoffeePopover2.astro";
+import SpaceParticles from "./SpaceParticles.astro";
+interface Props {
+  bgHeadingColor?: string;
+  headingColor?: string;
+  spanColor?: string;
+  split?: boolean;
+}
+
+const {
+  split = false,
+  bgHeadingColor,
+  headingColor,
+  spanColor = "var(--color-1)",
+} = Astro.props;
+
+const solidOrNot = bgHeadingColor
+  ? bgHeadingColor
+  : `oklch(from var(--color-light) .9 c h / .2)`;
 ---
 
 <div class="scroller" data-direction="right" data-speed="fast">
+  {split && <SpaceParticles />}
   <div class="scroller__inner">
     <!-- IMG 1 -->
     <button popovertarget="popover1" class="img-container">
@@ -10,8 +30,13 @@ import CoffeePopover from "./CoffeePopover.astro";
         title="BRYGG"
         id="popover1"
         imageSrc="/images/coffee/brygg.avif"
+        bg="url('/images/coffee/brygglabels.avif')"
+        bgColor="var(--color-3)"
+        blendMode="color-burn"
       />
-      <h2>BRY<span>gg</span><span class="dot">.</span></h2>
+      <h2 aria-label="Brygg">
+        BRY<span class="lowercase">gg</span><span class="dot">.</span>
+      </h2>
       <img src="/images/coffee/brygg.avif" alt="bag of coffebeans" />
     </button>
 
@@ -21,8 +46,13 @@ import CoffeePopover from "./CoffeePopover.astro";
         title="ESP"
         id="popover2"
         imageSrc="/images/coffee/esp.avif"
+        bg="url('/images/coffee/esplabels.avif')"
+        bgColor="var(--color-4-dark)"
+        blendMode="color-burn"
       />
-      <h2>ESP<span>resso</span><span class="dot">.</span></h2>
+      <h2 aria-label="Espresso">
+        ESP<span class="lowercase">resso</span><span class="dot">.</span>
+      </h2>
       <img src="/images/coffee/esp.avif" alt="bag of coffebeans" />
     </button>
 
@@ -32,8 +62,13 @@ import CoffeePopover from "./CoffeePopover.astro";
         title="MELLAN"
         id="popover3"
         imageSrc="/images/coffee/mellan.avif"
+        bg="url('/images/decorations/mugz.avif')"
+        bgColor="var(--color-8)"
+        blendMode="color-dodge"
       />
-      <h2>BRY<span>gg</span><span class="dot">.</span></h2>
+      <h2 aria-label="Brygg">
+        BRY<span class="lowercase">gg</span><span class="dot">.</span>
+      </h2>
       <img src="/images/coffee/mellan.avif" alt="bag of coffebeans" />
     </button>
 
@@ -44,14 +79,17 @@ import CoffeePopover from "./CoffeePopover.astro";
         id="popover4"
         imageSrc="/images/coffee/espgrande.avif"
       />
-      <h2>ESP<span>resso</span><span class="dot">.</span></h2>
+      <h2 aria-label="Espresso">
+        ESP<span class="lowercase">resso</span><span class="dot">.</span>
+      </h2>
       <img src="/images/coffee/espgrande.avif" alt="bag of coffebeans" />
     </button>
   </div>
   <h3>DEMETER</h3>
+  <!-- <h3>JÄRNA ROSTERI</h3> -->
 </div>
 
-<style>
+<style define:vars={{ solidOrNot, headingColor, spanColor }}>
   button {
     background: none;
     border: none;
@@ -75,11 +113,13 @@ import CoffeePopover from "./CoffeePopover.astro";
     overflow-x: clip;
     position: relative;
   }
+  .scroller > * {
+    flex: 1;
+  }
 
   .scroller__inner {
     display: flex;
     align-items: center;
-    gap: 1rem;
     position: absolute;
     left: 0;
     will-change: transform;
@@ -116,20 +156,22 @@ import CoffeePopover from "./CoffeePopover.astro";
   h2 {
     font-size: 6rem;
     white-space: nowrap;
-    color: var(--color-brand-2);
-    color: var(--color-4-dark);
-    padding-right: 2rem;
-    padding-left: 1rem;
-    /* font-family: "Betelgeuse"; */
+    /* color: var(--color-brand-2); */
+    color: var(--headingColor);
+    /* padding-right: 2rem;
+    padding-left: 1rem; */
+    /* font-family: "Nacho"; */
+    /* margin-inline: -5rem; */
   }
   span {
-    color: rgb(255, 255, 255);
-    font-family: "Betelgeuse";
+    color: var(--spanColor, var(--color-light));
+    font-family: var(--font-secondary-heading);
     font-size: 3rem;
   }
   h3 {
     font-size: 6rem;
-    color: rgba(255, 255, 255, 0.172);
+
+    color: var(--solidOrNot);
     text-align: center;
     margin: 0 auto;
   }
@@ -147,9 +189,10 @@ import CoffeePopover from "./CoffeePopover.astro";
 
   .scroller__inner img {
     width: 300px;
-    height: 300px;
+    aspect-ratio: 1;
+    /* height: 100px; */
     object-fit: contain;
-    transform: rotate(45deg);
+    /* transform: rotate(120deg); */
     transition: transform 0.3s ease;
     z-index: 999;
   }
