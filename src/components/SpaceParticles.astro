@@ -1,18 +1,26 @@
+---
+interface Props {
+  bg?: string;
+}
+
+const { bg } = Astro.props;
+---
+
 <canvas id="canvas"></canvas>
 
-<style>
+<style define:vars={{ bg }}>
   canvas {
     flex: 1; /* OBS ONLY ON SPLIT*/
     display: block;
     width: 100%;
     height: 100%;
-    background: var(--color-2);
+    background: var(--bg);
     /* grid-row: span 2; */
   }
 </style>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("astro:page-load", () => {
     let canvas = document.querySelector("#canvas") as HTMLCanvasElement,
       ctx = canvas.getContext("2d"),
       w = 1500,

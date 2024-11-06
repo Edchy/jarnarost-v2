@@ -20,7 +20,7 @@ const {
 ---
 
 <div
-  id="shader"
+  id="shader2"
   data-image-url={imageUrl}
   data-color-intensity={colorIntensity}
   data-speed={speed}
@@ -35,7 +35,7 @@ const {
   let uniforms;
 
   function init() {
-    const container = document.getElementById("shader");
+    const container = document.getElementById("shader2");
     const rect = container.getBoundingClientRect();
 
     const colorIntensity = parseFloat(
@@ -211,21 +211,32 @@ const {
     requestAnimationFrame(animate);
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("astro:page-load", () => {
     init();
     animate();
   });
 </script>
 
 <style define:vars={{ width, height }}>
-  #shader {
+  #shader2 {
     width: var(--width);
     height: var(--height);
     margin: 0;
     padding: 0;
+    /* cursor: pointer; */
+    position: relative;
+    /* grid-row: span 2; */
+  }
+  #shader2::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    /* background-image: url("/images/andy-wang.avif"); */
+    background-color: oklch(from var(--color-4-dark) calc(1 - 0.1) c h / 0.1);
+    background-blend-mode: color-burn;
   }
 
-  #shader canvas {
+  #shader2 canvas {
     width: 100% !important;
     height: 100% !important;
   }

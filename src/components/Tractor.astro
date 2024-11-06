@@ -3,21 +3,20 @@
 ---
 
 <!-- <div id="tractor">🚜</div> -->
-<div id="shader"></div>
+<div id="tractor"></div>
 
 <script>
   import * as THREE from "three";
 
-  document.addEventListener("astro:page-load", () => {
-    let camera: THREE.Camera;
-    let scene: THREE.Scene;
-    let renderer: THREE.WebGLRenderer;
-    let clock: THREE.Clock;
-    let uniforms: {
-      u_time: { type: string; value: number };
-      u_resolution: { type: string; value: THREE.Vector2 };
-    };
-    const vertexShader = `
+  let camera: THREE.Camera;
+  let scene: THREE.Scene;
+  let renderer: THREE.WebGLRenderer;
+  let clock: THREE.Clock;
+  let uniforms: {
+    u_time: { type: string; value: number };
+    u_resolution: { type: string; value: THREE.Vector2 };
+  };
+  const vertexShader = `
   varying vec2 vUv;
   void main() { 
     gl_Position = vec4(position, 1.0);
@@ -25,7 +24,7 @@
   }
 `;
 
-    const fragmentShader = `
+  const fragmentShader = `
   precision highp float;
 
   uniform vec2 u_resolution;
@@ -143,61 +142,62 @@
   }
 `;
 
-    function init() {
-      const container = document.getElementById("shader");
-      if (!container) return;
+  function init() {
+    const container = document.getElementById("tractor");
+    if (!container) return;
 
-      clock = new THREE.Clock();
-      camera = new THREE.Camera();
-      camera.position.z = 1;
-      scene = new THREE.Scene();
-      const geometry = new THREE.PlaneGeometry(2, 2);
+    clock = new THREE.Clock();
+    camera = new THREE.Camera();
+    camera.position.z = 1;
+    scene = new THREE.Scene();
+    const geometry = new THREE.PlaneGeometry(2, 2);
 
-      uniforms = {
-        u_time: { type: "f", value: 1.0 },
-        u_resolution: { type: "v2", value: new THREE.Vector2() },
-      };
+    uniforms = {
+      u_time: { type: "f", value: 1.0 },
+      u_resolution: { type: "v2", value: new THREE.Vector2() },
+    };
 
-      const material = new THREE.ShaderMaterial({
-        uniforms,
-        vertexShader,
-        fragmentShader,
-      });
+    const material = new THREE.ShaderMaterial({
+      uniforms,
+      vertexShader,
+      fragmentShader,
+    });
 
-      const mesh = new THREE.Mesh(geometry, material);
-      scene.add(mesh);
-      renderer = new THREE.WebGLRenderer();
-      renderer.setPixelRatio(window.devicePixelRatio);
-      container.appendChild(renderer.domElement);
-      onWindowResize();
-      window.addEventListener("resize", onWindowResize);
-    }
+    const mesh = new THREE.Mesh(geometry, material);
+    scene.add(mesh);
+    renderer = new THREE.WebGLRenderer();
+    renderer.setPixelRatio(window.devicePixelRatio);
+    container.appendChild(renderer.domElement);
+    onWindowResize();
+    window.addEventListener("resize", onWindowResize);
+  }
 
-    function onWindowResize() {
-      const width = Math.min(
-        window.innerWidth,
-        document.documentElement.clientWidth
-      );
-      const height = Math.min(
-        window.innerHeight,
-        document.documentElement.clientHeight
-      );
-      renderer.setSize(width, height);
-      uniforms.u_resolution.value.x = renderer.domElement.width;
-      uniforms.u_resolution.value.y = renderer.domElement.height;
-    }
+  function onWindowResize() {
+    const width = Math.min(
+      window.innerWidth,
+      document.documentElement.clientWidth
+    );
+    const height = Math.min(
+      window.innerHeight,
+      document.documentElement.clientHeight
+    );
+    renderer.setSize(width, height);
+    uniforms.u_resolution.value.x = renderer.domElement.width;
+    uniforms.u_resolution.value.y = renderer.domElement.height;
+  }
 
-    function render() {
-      uniforms.u_time.value = clock.getElapsedTime();
-      renderer.render(scene, camera);
-    }
+  function render() {
+    uniforms.u_time.value = clock.getElapsedTime();
+    renderer.render(scene, camera);
+  }
 
-    function animate() {
-      render();
-      requestAnimationFrame(animate);
-    }
+  function animate() {
+    render();
+    requestAnimationFrame(animate);
+  }
 
-    // Initialize the scene when the component mounts
+  // Initialize the scene when the component mounts
+  document.addEventListener("astro:page-load", () => {
     init();
     animate();
   });
@@ -205,26 +205,6 @@
 
 <style>
   #tractor {
-    position: absolute;
-    font-size: 5em;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    animation: circle 5.11s infinite;
-  }
-
-  @keyframes circle {
-    0% {
-      transform: translate(-50%, -50%) rotate(0deg) translate(180px)
-        rotate(0deg);
-    }
-    100% {
-      transform: translate(-50%, -50%) rotate(360deg) translate(180px)
-        rotate(-360deg);
-    }
-  }
-
-  #shader {
     /* position: fixed; */
     position: relative;
     /* top: 0;
@@ -234,7 +214,7 @@
     overflow-y: hidden;
     /* z-index: 0; */
   }
-  #shader::before {
+  #tractor::before {
     content: "";
     position: absolute;
     inset: 0;

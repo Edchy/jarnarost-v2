@@ -2,15 +2,22 @@
 
 <style>
   a {
-    position: fixed;
-    top: 5px;
-    left: 10px;
+    position: absolute;
+    left: 4px;
+    top: 2px;
     z-index: 1100;
     transition: scale 0.1s;
-    width: 80px;
+    width: 50px;
     rotate: -10deg;
   }
-  a:hover {
-    scale: 1.1;
+
+  @media (min-width: 700px) {
+    a {
+      width: 80px;
+
+      top: 40px;
+      left: 50%;
+      transform: translate(-40%, -50%);
+    }
   }
 </style>
