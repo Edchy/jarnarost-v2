@@ -109,10 +109,11 @@ const solidOrNot = bgHeadingColor
     display: flex;
     align-items: center;
     max-width: 100vw;
-    height: 40vh;
+    height: 30vh;
     overflow-x: clip;
+
     position: relative;
-    overflow-y: hidden;
+    /* overflow-y: hidden;
     -webkit-mask: linear-gradient(
       90deg,
       transparent,
@@ -126,7 +127,7 @@ const solidOrNot = bgHeadingColor
       white 20%,
       white 80%,
       transparent
-    );
+    ); */
   }
   .scroller > * {
     flex: 1;
@@ -195,28 +196,28 @@ const solidOrNot = bgHeadingColor
   }
   @media (min-width: 700px) {
     h2 {
-      font-size: 10rem;
+      font-size: 20rem;
     }
     h3 {
-      font-size: 10rem;
+      font-size: 20rem;
     }
     span {
-      font-size: 3rem;
+      font-size: 6rem;
     }
   }
 
   .scroller__inner img {
-    width: 300px;
+    width: 400px;
     aspect-ratio: 1;
     /* height: 100px; */
     object-fit: contain;
-    /* transform: rotate(120deg); */
+    transform: rotate(65deg);
     transition: transform 0.3s ease;
     z-index: 999;
   }
 
   .scroller__inner img:hover {
-    transform: rotate(12deg) translateY(100px) scale(1.55);
+    transform: rotate(100deg) scale(1.5);
   }
 </style>
 
